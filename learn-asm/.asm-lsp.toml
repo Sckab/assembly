@@ -1,0 +1,17 @@
+[default_config]
+assembler = "nasm"
+instruction_set = "x86/x86-64"
+
+[opts]
+compiler = "nasm"
+diagnostics = true
+default_diagnostics = true
+
+[[project]]
+path = "."
+assembler = "nasm"
+instruction_set = "x86/x86-64"
+
+[project.opts]
+compiler = "nasm"
+compile_flags_txt = ["-f", "elf64"]
