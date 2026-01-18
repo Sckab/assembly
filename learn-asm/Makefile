@@ -15,10 +15,16 @@ WRITE_BIN_FILE = bin/write/main
 WRITE_OBJECT_FILE = bin/write/write.o
 WRITE_SRC_FILES = src/write/write.asm
 
+READ_BIN_DIR = bin/read
+READ_BIN_FILE = bin/read/main
+READ_OBJECT_FILE = bin/read/read.o
+READ_SRC_FILES = src/read/read.asm
+
 all:
 				@printf "available commands:\n"
 				@printf "\tmake hello - to assemble the 'Hello, World' program\n"
 				@printf "\tmake write - to assemble the write program\n"
+				@printf "\tmake read  - to assemble the read program\n"
 				@printf "\tmake clean - to remove the contents of the bin dir\n"
 
 hello: $(HELLO_SRC_FILES)
@@ -30,6 +36,11 @@ write: $(WRITE_SRC_FILES)
 				mkdir -p $(WRITE_BIN_DIR)
 				$(ASM) $(FLAGS) $(WRITE_SRC_FILES) -o $(WRITE_OBJECT_FILE)
 				$(LINKER) $(WRITE_OBJECT_FILE) -o $(WRITE_BIN_FILE)
+
+read: $(READ_SRC_FILES)
+				mkdir -p $(READ_BIN_DIR)
+				$(ASM) $(FLAGS) $(READ_SRC_FILES) -o $(READ_OBJECT_FILE)
+				$(LINKER) $(READ_OBJECT_FILE) -o $(READ_BIN_FILE)
 
 clean:
 				rm -rfv $(BIN_DIR)/*
